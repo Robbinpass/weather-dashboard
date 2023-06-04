@@ -69,8 +69,42 @@ function displayPreviousSearch() {
     previousSearch.append(previousButton);
 }
 
+// function to clear current weather and forecast from page.
+function removeNodes() {
+    currentWeather.innerHTML = '';
+    forecastWeather.innerHTML = '';
+    
+}
+// Function to clear current city input value.
+function clearInput() {
+    currentCity.value = '';
 
+}
 
+function getWeather(inputAtttriute) {
+    var requestURL = 'https://api.openweathermap.org/data/2.5/weather?lat=' + latitude + longitude + '&units=imperialAPPID=3499423db588f95e559c805825019d12';
+
+    fetch(requestURL)
+        .then(function(response) {
+            return response.JSON();
+        })
+        .then(function(data) {
+            var weatherTemp = document.createElement('li');
+            var weatherWind = document.createElement('li');
+            var weatherHumidity = document.createElement('li');
+
+            weatherTemp.innerHTML = 'Temp: ' +Math.round(data.main.temp) + 'F';
+            weatherWind.innerHTML = 'Wind: ' + Math.round(data.wind.speed) + 'mph';
+            weatherHumidity.innerHTML = 'Humidity: ' + data.main.humidity + '%';
+
+            currentWeather.appendChild(weatherTemp);
+            currentWeather.appendChild(weatherWind);
+            currentWeather.appendChild(weatherHumidity);
+
+            var currentDay = day.js().format('M/D/YYYY');
+
+        })
+};
 
 
 
