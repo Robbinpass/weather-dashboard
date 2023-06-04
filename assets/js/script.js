@@ -106,6 +106,31 @@ function getWeather(inputAtttriute) {
         })
 };
 
+function getEveryNth(data, nth) {
+    var result = [];
+    for (var i = 7; i < data.length; i += nth) {
+        result.push(data[i]);
+    
+    }
+
+    return result;
+};
+
+
+function getForecast() {
+    var requestURL = 'https://api.openweathermap.org/data/2.5/forecast?lat=' + latitude + 'longitude' + '&units=imperial&APPID=3499423db588f95e559c805825019d12';
+
+    fetch(requestURL)
+        .then(function(response) {
+            return response.json;
+        })
+        .then(function(data) {
+            var data = data.list;
+
+            data = getEveryNth(data, 8);
+        })
+}
+
 
 
 
