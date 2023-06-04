@@ -1,3 +1,80 @@
+var currentWeather = document.getElementById('forecast-current');
+var currentCity = document.getElementById('search-name');
+var searchButton = document.getElementById('weather-search-button');
+var previousSearch = document.getElementById('current-search');
+var forecastWeather = document.getElementById('forecast-current');
+
+var searchInputVal = '';
+var searchInputArray = [];
+var previousStored = '';
+
+
+displayPreviousSearch();
+
+
+function getLocation(event) {
+    inputAtttriute = event.target.getattribute('user-value');
+    var requestURL = 'https://api.openweathermap.org/geo/1.0/direct?q=' + inputAtttriute + '&APPID=3499423db588f95e559c805825019d12';
+
+    fetch(requestURL)
+        .then(function(response) {
+            return response.json();
+
+    })
+    .then(function(data) {
+        if(data.length <= 0){
+            console.log('No Weather Found')
+        
+        } else {
+            latitude = data[0].lat;
+            longitude = data[0].lon;
+
+            getWeather(inputAtttriute);
+            getForecast();
+            storePreviousSearch(inputAtttriute);
+            displayPreviousSearch();2
+        }
+    })
+
+    clearInput();
+    removeNodes();
+};
+
+// Function to  add previous search history to local storage.
+function storePreviousSearch(searchInputVal) {
+    searchInputArray.push(searchInputVal);
+    for (i=0; i < searchInputArray.length; i++) {
+        localStorage.setItem(JSON.stringify(searchInputArray[i]), i)
+    }
+};
+
+
+// Function to populate previous search container with a list of stored locations.
+function displayPreviousSearch() {
+    var storedSearchArray = {...localStorage};
+    var storedSearchValues = Object.keys(storedSearchArray);
+    storedSearchValues.sort();
+    previousSearch.innerHTML = '';
+
+    for (let i = 0; i <storedSearchValues.length; i++)
+        previousStored = storedSearchValues[i].replace('');
+
+    
+    var previousButton = document.createElement('button');
+    previousButton.setAttribute('user-value', previousStored);
+    previousButton.className = 'previous-button btn btn-sm btn-block';
+    previousButton.addEventListener('click', getLocation);
+
+    previousButton.appendChild(document.createTextNode(previousStored));
+    previousSearch.append(previousButton);
+}
+
+
+
+
+
+
+
 /* 
 Pseudocode
 
