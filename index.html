@@ -11,9 +11,10 @@
 
 <body>
     <header id="header">Welcome to the Weather Forecast Dashboard!</header>
+    <div class="container-fluid row flex-nowrap">
     
-    <div id="side-container" class="col-3">
-        <div id="weather-search">
+        <div id="side-container" class="col-3">
+        <div id="current-search">
         <label for="city-name">Search for the weather of any city here!</label><br>
         <input type="text" id="search-name" placeholder="Enter Search Here"><br>
         <input id="weather-search-button" type="submit" value="search">
@@ -25,15 +26,21 @@
             <div id="recent-search-container"></div>
         </div>
 
+         </div>
     </div>
 
     <div id="main-page-container" class="col"></div>
-        <h2 id="location-current"></h2>
+        <h2 id="forecast-title"></h2>
+
+
 
         <div id="forecast-page" class="row flex-nowrap gap-3">
 
         </div>
-    </div>
-    
+    </div>  
+    <script src="./assets/js/script.js"></script>
+    <script src="src="https://cdn.jsdelivr.net/npm/dayjs@1.11.3/dayjs.min.js"></script> 
+        
+
 </body>
 </html>
