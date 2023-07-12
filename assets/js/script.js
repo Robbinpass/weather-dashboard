@@ -1,5 +1,8 @@
-// // * source https://www.geolocation-db.com/documentation
-// * @param {object} data 
+/**
+ * Get approximate location
+ * source https://www.geolocation-db.com/documentation
+ * @param {object} data 
+ */
 
 function callback(data) {
  getResults(data.latitude, data.longitude, false);
@@ -51,7 +54,7 @@ searchBtn.addEventListener('click', function () {
 */
 function getCoordinates(searchQuery) {
 
- const apiUrlQuery = 'https://api.openweathermap.org/geo/1.0/direct?q=' + searchQuery + '&limit=5&appid=e97ee8621afbdf55e3cfc6d7bc09d848';
+ const apiUrlQuery = 'https://api.openweathermap.org/geo/1.0/direct?q=' + searchQuery + '&limit=5&appid=3499423db588f95e559c805825019d12';
 
  fetch(apiUrlQuery)
    .then(function (response) {
@@ -68,18 +71,18 @@ function getCoordinates(searchQuery) {
       */
      searchText.value = "";
      getResults(data[0].lat, data[0].lon, true)  
-     // if (data.length === 1) {
-     //   searchText.value = "";
-     //   getResults(data[0].lat, data[0].lon, true)  
-     // } else {
-     //   searchText.value = "";
-     //   getResults(data[0].lat, data[0].lon, true)  
-       // data.forEach(element => {
-       //   let resultOption = document.createElement('option');
-       //       resultOption.setAttribute('value', element.name);
-       //   searchDataList.appendChild(resultOption);
-       // });
-     // }      
+     if (data.length === 1) {
+       searchText.value = "";
+       getResults(data[0].lat, data[0].lon, true)  
+     } else {
+       searchText.value = "";
+       getResults(data[0].lat, data[0].lon, true)  
+       data.forEach(element => {
+         let resultOption = document.createElement('option');
+             resultOption.setAttribute('value', element.name);
+         searchDataList.appendChild(resultOption);
+       });
+     }      
    })
    .catch(function (error) {
      alert("Unable to connect to Open Weather");
@@ -97,7 +100,7 @@ function getCoordinates(searchQuery) {
 function getResults(lat, long, updateSearchHistory) {
 
  // current weather API call    
- let currentApi = 'https://api.openweathermap.org/data/2.5/weather?lat=' + lat + '&lon=' + long + '&lang=en&appid=e97ee8621afbdf55e3cfc6d7bc09d848&units=imperial';
+ let currentApi = 'https://api.openweathermap.org/data/2.5/weather?lat=' + lat + '&lon=' + long + '&lang=en&appid=3499423db588f95e559c805825019d12&units=imperial';
  
  fetch(currentApi, {
    cache: 'reload',
@@ -144,8 +147,8 @@ function getResults(lat, long, updateSearchHistory) {
 
    // Forcast API call
    // Forcast call
-   let forcastApiUrl = 'https://api.openweathermap.org/data/2.5/forecast?lat=' + lat + '&lon=' + long + '&lang=en&appid=e97ee8621afbdf55e3cfc6d7bc09d848&units=imperial';
-     fetch(forcastApiUrl, {
+   let forecastApiUrl = 'https://api.openweathermap.org/data/2.5/forecast?lat=' + lat + '&lon=' + long + '&lang=en&appid=3499423db588f95e559c805825019d12&units=imperial';
+     fetch(forecastApiUrl, {
        cache: 'reload'
        })
        .then(function (response) {
