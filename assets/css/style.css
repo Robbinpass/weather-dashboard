@@ -43,13 +43,13 @@
 
 /* clear storage below list of cities */
 #clear-storage{
-    color:grey;
+    color:rgb(27, 20, 221);
     text-decoration: none;
-    font-size:.75em;
+    font: size 100px;;
     margin: .5em 0em 0em .5em;
 }
 
-/* Weather card styling */
+/* Weather styling */
 .weather-card{
     width: 9rem;
     background-color: #0275d8;
@@ -57,7 +57,7 @@
     text-align: center;
 }
 
-/* UV coloring scheme for UV display */
+/* UV coloring scheme */
 .uv-favorable{
     background-color: green;
     border-radius: 5px;
