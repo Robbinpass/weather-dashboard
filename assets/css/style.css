@@ -1,74 +1,100 @@
-:root {
-    --dark-background: #303447;
-    --dark-background-gradient: #2d303d;
-    --dark-background-font: #e5e1e1;
-    --light-background: #eeeff8;
-    --font-color: #1f1f29;
+/* Header styling */
+#header{
+    background-size: cover;
+    background-position-y: 40%;
+    color:white;
+    background-color:rgb(83, 83, 83);
+    position:relative !important;
 }
 
-body {
-    background-image: linear-gradient(90deg, var(--dark-background-gradient), var(--dark-background));
-    color: var(--dark-background-font);
-    font-family: 'Questrial', sans-serif;
+/* h1 style for city name */
+#header h1{
+    font-size: 400%;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: bold;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    background-clip: text;
+    text-shadow: 0px 3px 3px rgba(255,255,255,0.5);
 }
 
-.dark {
-    background-image: linear-gradient(90deg, var(--dark-background-gradient), var(--dark-background));
-    color: var(--dark-background-font);
+/*Jumbotron padding and border */
+.jumbotron {
+    padding: 1rem;
+    border-radius: 0;
 }
 
-.light {
-    background-color: var(--light-background);
+/* City Search width */
+#search-city{
+    width:80%;
 }
 
-#search-history-list li {
-    border: 1px solid var(--font-color);
+/* fontawesome magnifying glass icon */
+#search-button-icon{
+    width:15px;
+    display:inline-block;
+}
+
+/*Current weather padding */
+#current-weather {
+    padding-left: 15px;
+}
+
+/* clear storage below list of cities */
+#clear-storage{
+    color:grey;
+    text-decoration: none;
+    font-size:.75em;
+    margin: .5em 0em 0em .5em;
+}
+
+/* Weather card styling */
+.weather-card{
+    width: 9rem;
+    background-color: #0275d8;
+    color: white;
+    text-align: center;
+}
+
+/* UV coloring scheme for UV display */
+.uv-favorable{
+    background-color: green;
     border-radius: 5px;
+    color: white;
 }
 
-#search-history-list li:hover {
-    cursor: pointer;
-    border-color: #f0ad4e;
-    translate: 5px;
+.uv-moderate{
+    background-color: orange;
+    border-radius: 5px;
+    color: white;
 }
 
-#search-history-list li i:hover {
-    color: #d61515;
+.uv-severe{
+    background-color: red;
+    border-radius: 5px;
+    color: white;
 }
 
-.current-weather-card {
-    max-width: 420px;
+.footer{
+    text-align: center;
+
 }
 
-.table {
-    color: var(--dark-background-font);
-    max-width: 320px;
-}
 
-.table td {
-    padding: 0;
-}
 
-/* History item close icon */
-.fa-solid.fa-xmark:hover {
-    cursor: pointer;
+/* Media queries */
+@media only screen and (max-width: 992px) {
+    #search-city{
+        width:100%;
+    }
+    #search-button{
+        width:100%;
+    }
 }
+@media only screen and (max-width: 575px) {
 
-.transparent {
-    background-color: rgba(255, 255, 255, .1);
-    color: var(--dark-background-font);
-}
-
-.future-day-container {
-    background-color: rgba(22, 33, 77, 0.6);
-    color: var(--dark-background-font);
-    max-width: 300px;
-}
-
-#forcast-container > div:not(:last-child) {
-    border-bottom: 1px solid var(--dark-background-font);
-}
-
-footer {
-    background-color: var(--dark-background-gradient);
+    #fiveDayForecastUl{
+        justify-content: center;
+    }
 }
